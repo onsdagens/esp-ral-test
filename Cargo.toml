@@ -1,0 +1,28 @@
+[package]
+name = "esp-things"
+version = "0.1.0"
+authors = ["Pawel Dzialo <pawdzi-7@student.ltu.se>"]
+edition = "2021"
+publish = false  # This is an example package
+
+[workspace]
+
+
+[dependencies]
+cortex-m = "0.7.7"
+esp-riscv-rt = {version = "0.3.0", features=["zero-bss"]}
+ral-registers = "0.1.2"
+critical-section = {version="1.1.1"}
+rtt-target = { version = "0.4.0" }
+riscv = {version = "0.10.1", features = ["critical-section-single-hart"]}
+esp32c3-ral = {git = "https://github.com/onsdagens/esp32c3-ral"}
+
+[patch.crates-io]
+esp-riscv-rt = {git = 'https://github.com/onsdagens/esp32c3-rtic-rt/'}
+rtt-target = { git = 'https://github.com/perlindgren/rtt-target', branch = 'panic-rtt-target-riscv' }
+
+#[lib]
+#name = "rtic_safe"
+#path = "lib.rs"
+
+
