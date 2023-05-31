@@ -2,7 +2,6 @@
 #![no_main]
 use rtt_target::{rtt_init_print, rprintln};
 use core::panic::PanicInfo;
-//use panic_rtt_target as _;
 use esp_riscv_rt::{entry};
 use riscv::asm;
 use esp32c3_ral as ral;
@@ -18,7 +17,7 @@ unsafe fn main()->!{
         ral::modify_reg!(ral::gpio, gpio, OUT, DATA_ORIG:0b10000000);
         rprintln!("Blink on");
         let mut i = 0;
-        while(i<1000000){
+        while i<1000000 {
             asm::nop();
             i+=1;
         }

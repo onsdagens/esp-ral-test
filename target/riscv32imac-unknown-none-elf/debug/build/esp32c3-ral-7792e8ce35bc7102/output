@@ -1,0 +1,3 @@
+cargo:rustc-link-search=/home/pawel/esp-ral-test/target/riscv32imac-unknown-none-elf/debug/build/esp32c3-ral-7792e8ce35bc7102/out
+cargo:rerun-if-changed=Esp32c3.x
+cargo:rerun-if-changed=build.rs

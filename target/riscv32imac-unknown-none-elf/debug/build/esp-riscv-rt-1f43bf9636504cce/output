@@ -1,0 +1,1 @@
+cargo:rustc-link-search=/home/pawel/esp-ral-test/target/riscv32imac-unknown-none-elf/debug/build/esp-riscv-rt-1f43bf9636504cce/out

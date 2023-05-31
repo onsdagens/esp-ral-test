@@ -64,7 +64,6 @@ dependencies = [
 name = "esp-things"
 version = "0.1.0"
 dependencies = [
- "cortex-m",
  "critical-section",
  "esp-riscv-rt",
  "esp32c3-ral",
