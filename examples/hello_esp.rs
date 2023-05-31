@@ -1,15 +1,19 @@
 #![no_std]
 #![no_main]
-use rtt_target::{rtt_init_print, rprintln};
 use core::panic::PanicInfo;
-use esp_riscv_rt::{entry};
+use esp_riscv_rt::entry;
+use rtt_target::{rprintln, rtt_init_print};
 #[entry]
-unsafe fn main()->!{
+unsafe fn main() -> ! {
     rtt_init_print!();
     rprintln!("Hi!");
-    loop{continue;}
+    loop {
+        continue;
+    }
 }
 #[panic_handler]
-fn panic(_:&PanicInfo)->!{
-    loop{continue;}
+fn panic(_: &PanicInfo) -> ! {
+    loop {
+        continue;
+    }
 }
