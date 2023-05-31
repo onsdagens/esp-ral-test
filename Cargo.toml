@@ -9,7 +9,6 @@ publish = false  # This is an example package
 
 
 [dependencies]
-cortex-m = "0.7.7"
 esp-riscv-rt = {version = "0.3.0", features=["zero-bss"]}
 ral-registers = "0.1.2"
 critical-section = {version="1.1.1"}
