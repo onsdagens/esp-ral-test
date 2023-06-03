@@ -9,16 +9,18 @@ publish = false  # This is an example package
 
 
 [dependencies]
-esp-riscv-rt = {version = "0.3.0", features=["zero-bss"]}
 ral-registers = "0.1.2"
 critical-section = {version="1.1.1"}
-rtt-target = { version = "0.4.0" }
+rtt-target = { version = "0.3.1", features=["riscv"] }
 riscv = {version = "0.10.1", features = ["critical-section-single-hart"]}
 esp32c3-ral = {git = "https://github.com/onsdagens/esp32c3-ral"}
+riscv-rt = {path = "../riscv-rt/"}
+esp-riscv-rt = {git = "https://github.com/onsdagens/esp32c3-rtic-rt"}
+esp-backtrace = { version = "0.7.0", features = ["esp32c3", "print-rtt", "panic-handler", "exception-handler"] }
 
 [patch.crates-io]
 esp-riscv-rt = {git = 'https://github.com/onsdagens/esp32c3-rtic-rt/'}
-rtt-target = { git = 'https://github.com/perlindgren/rtt-target', branch = 'panic-rtt-target-riscv' }
+rtt-target = { git = 'https://github.com/onsdagens/rtt-target', branch = 'master' }
 
 #[lib]
 #name = "rtic_safe"

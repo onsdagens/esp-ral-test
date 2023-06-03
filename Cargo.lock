@@ -3,6 +3,15 @@
 version = 3
 
 [[package]]
+name = "aho-corasick"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "67fc08ce920c31afb70f013dcce1bfc3a3195de6a228474e45e1f145b36f8d04"
+dependencies = [
+ "memchr",
+]
+
+[[package]]
 name = "bare-metal"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -52,12 +61,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "esp-backtrace"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b151ef7db21143b1a3b7a378c16d97ae13d0a5e3cb9682ed1f11bba821cce42d"
+dependencies = [
+ "esp-println",
+]
+
+[[package]]
+name = "esp-println"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af6a511d37dba5fb8f01bf5485bc619a1a1959e1aaf666a7597df8fe615a0816"
+
+[[package]]
 name = "esp-riscv-rt"
 version = "0.3.0"
-source = "git+https://github.com/onsdagens/esp32c3-rtic-rt/#acf21343497920ba80b5d2f6920a5842baae1359"
+source = "git+https://github.com/onsdagens/esp32c3-rtic-rt#acf21343497920ba80b5d2f6920a5842baae1359"
 dependencies = [
- "riscv",
- "riscv-rt-macros",
+ "riscv 0.10.1",
+ "riscv-rt-macros 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -65,21 +89,35 @@ name = "esp-things"
 version = "0.1.0"
 dependencies = [
  "critical-section",
+ "esp-backtrace",
  "esp-riscv-rt",
  "esp32c3-ral",
  "ral-registers",
- "riscv",
+ "riscv 0.10.1",
+ "riscv-rt",
  "rtt-target",
 ]
 
 [[package]]
 name = "esp32c3-ral"
 version = "0.1.0"
-source = "git+https://github.com/onsdagens/esp32c3-ral#8139805977719645f79c4442b79181f267d60be8"
+source = "git+https://github.com/onsdagens/esp32c3-ral#d7dcc5ee6032c73617688fb73521361ec7485b33"
 dependencies = [
  "cortex-m",
  "ral-registers",
 ]
+
+[[package]]
+name = "lazy_static"
+version = "1.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+
+[[package]]
+name = "memchr"
+version = "2.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
 
 [[package]]
 name = "nb"
@@ -115,10 +153,44 @@ dependencies = [
 ]
 
 [[package]]
+name = "r0"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd7a31eed1591dcbc95d92ad7161908e72f4677f8fabf2a32ca49b4237cbf211"
+
+[[package]]
 name = "ral-registers"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "122003d369c71bcde02e16cd3e61b2e6da7320b54dc5943e7c1a3dc913008288"
+
+[[package]]
+name = "regex"
+version = "1.8.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "81ca098a9821bd52d6b24fd8b10bd081f47d39c22778cafaa75a2857a62c6390"
+dependencies = [
+ "aho-corasick",
+ "memchr",
+ "regex-syntax",
+]
+
+[[package]]
+name = "regex-syntax"
+version = "0.7.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "436b050e76ed2903236f032a59761c1eb99e1b0aead2c257922771dab1fc8c78"
+
+[[package]]
+name = "riscv"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a2f0b705d428e9d0f78e2bb73093887ee58a83c9688de3faedbb4c0631c4618e"
+dependencies = [
+ "bare-metal",
+ "bit_field",
+ "riscv-target",
+]
 
 [[package]]
 name = "riscv"
@@ -129,6 +201,25 @@ dependencies = [
  "bit_field",
  "critical-section",
  "embedded-hal",
+]
+
+[[package]]
+name = "riscv-rt"
+version = "0.11.0"
+dependencies = [
+ "r0",
+ "riscv 0.10.1",
+ "riscv-rt-macros 0.2.0",
+ "riscv-target",
+]
+
+[[package]]
+name = "riscv-rt-macros"
+version = "0.2.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -143,11 +234,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "riscv-target"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "88aa938cda42a0cf62a20cfe8d139ff1af20c2e681212b5b34adb5a58333f222"
+dependencies = [
+ "lazy_static",
+ "regex",
+]
+
+[[package]]
 name = "rtt-target"
-version = "0.4.0"
-source = "git+https://github.com/perlindgren/rtt-target?branch=panic-rtt-target-riscv#b3483f63e5eeace6ff63c14e9194a8c2b954d1b2"
+version = "0.3.1"
+source = "git+https://github.com/onsdagens/rtt-target?branch=master#82fe6c8d0564a105904db2019896054d5d85776d"
 dependencies = [
  "critical-section",
+ "riscv 0.6.0",
  "ufmt-write",
 ]
 

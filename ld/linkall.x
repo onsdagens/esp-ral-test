@@ -1,3 +1,3 @@
-INCLUDE "esp32c3-link.x"
+INCLUDE "direct-boot.x"
 INCLUDE "hal-defaults.x"
 INCLUDE "rom-functions.x"

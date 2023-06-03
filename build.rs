@@ -23,22 +23,22 @@ fn main() {
 
     File::create(out.join("memory.x"))
         .unwrap()
-        .write_all(include_bytes!("ld/db-esp32c3-memory.x"))
+        .write_all(include_bytes!("ld/esp32c3-memory.x"))
         .unwrap();
 
-    File::create(out.join("esp32c3-link.x"))
+    File::create(out.join("direct-boot.x"))
         .unwrap()
-        .write_all(include_bytes!("ld/db-esp32c3-link.x"))
+        .write_all(include_bytes!("ld/direct-boot.x"))
         .unwrap();
 
     File::create(out.join("riscv-link.x"))
         .unwrap()
-        .write_all(include_bytes!("ld/db-riscv-link.x"))
+        .write_all(include_bytes!("ld/riscv-link.x"))
         .unwrap();
 
     File::create(out.join("linkall.x"))
         .unwrap()
-        .write_all(include_bytes!("ld/db-linkall.x"))
+        .write_all(include_bytes!("ld/linkall.x"))
         .unwrap();
 
     println!("cargo:rustc-link-search={}", out.display());

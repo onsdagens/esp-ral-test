@@ -1,5 +1,7 @@
-INCLUDE memory.x
 
+
+INCLUDE "memory.x"
+ENTRY(_start)
 SECTIONS
 {
   .header : AT(0)
@@ -11,4 +13,5 @@ SECTIONS
 
 _stext = ORIGIN(IROM) + 8;
 
-INCLUDE riscv-link.x
+INCLUDE "riscv-link.x"
+
