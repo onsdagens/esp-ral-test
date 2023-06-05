@@ -14,16 +14,13 @@ critical-section = {version="1.1.1"}
 rtt-target = { version = "0.3.1", features=["riscv"] }
 riscv = {version = "0.10.1", features = ["critical-section-single-hart"]}
 esp32c3-ral = {git = "https://github.com/onsdagens/esp32c3-ral"}
-riscv-rt = {path = "../riscv-rt/"}
-esp-riscv-rt = {git = "https://github.com/onsdagens/esp32c3-rtic-rt"}
-esp-backtrace = { version = "0.7.0", features = ["esp32c3", "print-rtt", "panic-handler", "exception-handler"] }
+riscv-rt = "0.11.0"
+rtic = {version = "2.0.0-alpha.1", features=["riscv-esp32c3-backend"]}
+esp32c3-barebones-rt = {git = "https://github.com/onsdagens/esp32c3-barebones-rtic-rt"}
 
 [patch.crates-io]
-esp-riscv-rt = {git = 'https://github.com/onsdagens/esp32c3-rtic-rt/'}
 rtt-target = { git = 'https://github.com/onsdagens/rtt-target', branch = 'master' }
+rtic = {git = 'https://github.com/onsdagens/rtic', branch='espless'}
 
-#[lib]
-#name = "rtic_safe"
-#path = "lib.rs"
 
 
